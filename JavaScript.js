@@ -32,3 +32,31 @@ function getMinElement(){
 alert(min)
 document.cookie = "MIN=" + min.toString()
 }
+
+//task4
+function changeColor(){
+    let radios = document.getElementsByName('colors')
+
+    for(let i = 0; i < radios.length; i++){
+        if(radios[i].checked){
+            if(radios[i].value == 'blackColor'){
+                document.getElementById('block6').style.background = "black"
+                localStorage.setItem(this.name, this.value)
+            }
+            if(radios[i].value == 'whiteColor'){
+                document.getElementById('block6').style.background = "white"
+                localStorage.setItem(this.name, this.value)
+            }
+            if(radios[i].value == 'redColor'){
+                document.getElementById('block6').style.background = "red"
+                localStorage.setItem(this.name, this.value)
+            }
+            if(radios[i].value == 'pinkColor'){
+                document.getElementById('block6').style.background = "pink"
+                localStorage.setItem(this.name, this.value)
+            }
+            localStorage.setItem('colors',radios[i].value)
+        }
+    
+    }
+}
