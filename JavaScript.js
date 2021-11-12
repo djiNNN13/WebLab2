@@ -15,7 +15,7 @@ if(document.cookie !== "" && confirm("Cookies: " + document.cookie + ". Want to 
 }
 else
 {
-    document.cookie = "MIN=0;max-age=0";
+    document.cookie = "";
 }
 
 
