@@ -34,6 +34,25 @@ document.cookie = "MIN=" + min.toString()
 }
 
 //task4
+
+let item = localStorage.getItem("colors");
+if (item != null)
+{
+    if(item == "blackColor"){
+        document.getElementById('block6').style.background = "black"
+    }
+    if(item == "whiteColor"){
+        document.getElementById('block6').style.background = "white"
+    }
+    if(item == "redColor"){
+        document.getElementById('block6').style.background = "red"
+    }
+    if(item == "pinkColor"){
+        document.getElementById('block6').style.background = "pink"
+    }
+}
+
+
 function changeColor(){
     let radios = document.getElementsByName('colors')
 
@@ -41,22 +60,63 @@ function changeColor(){
         if(radios[i].checked){
             if(radios[i].value == 'blackColor'){
                 document.getElementById('block6').style.background = "black"
-                localStorage.setItem(this.name, this.value)
+                localStorage.setItem('colors',radios[i].value)
             }
             if(radios[i].value == 'whiteColor'){
                 document.getElementById('block6').style.background = "white"
-                localStorage.setItem(this.name, this.value)
+                localStorage.setItem('colors',radios[i].value)
             }
             if(radios[i].value == 'redColor'){
                 document.getElementById('block6').style.background = "red"
-                localStorage.setItem(this.name, this.value)
+                localStorage.setItem('colors',radios[i].value)
             }
             if(radios[i].value == 'pinkColor'){
                 document.getElementById('block6').style.background = "pink"
-                localStorage.setItem(this.name, this.value)
+                localStorage.setItem('colors',radios[i].value)
             }
-            localStorage.setItem('colors',radios[i].value)
+            
         }
     
     }
+}
+
+
+
+//task 5
+
+let newForm = document.createElement('form')
+newForm.innerHTML =
+	'<br> Write something: <input id="string_text"> <br>'+
+	'<button id="save" type="button">Apply</button>'
+let table = document.createElement('table')
+document.getElementById('block4').append(table)
+
+let mydiv = document.getElementById('customDiv');
+mydiv.onclick = () => document.getElementById('block4').append(newForm);
+
+
+
+newForm[1].onclick = () => {
+	const textString = newForm[0].value;
+	addField(textString)
+}
+
+index = 0
+function addField(textString) {
+	let row = table.insertRow(index)
+	let cell = row.insertCell(0)
+
+	let textField = document.createTextNode(textString)
+	cell.appendChild(textField)
+
+	let saveButton = document.createElement('button')
+	cell.appendChild(saveButton)
+	saveButton.textContent = 'Save'
+	saveButton.style.marginTop = '5px'
+	saveButton.onclick = () => {
+		const hist = '$'+ textString
+		let dumpy = localStorage.getItem('text') + hist
+		localStorage.setItem('text',dumpy);
+	}
+	index++
 }
