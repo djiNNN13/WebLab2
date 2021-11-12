@@ -9,7 +9,7 @@ var res = (radius**2 * Math.PI);
 document.getElementById("task2").innerHTML += "The answer is: " + res;
 
 //task 3
-window.onload = function() {
+
 if(document.cookie !== "" && confirm("Cookies: " + document.cookie + ". Want to save cookies?"))
 {
     document.getElementById("getMinForm").setAttribute("class", "hidden");
@@ -20,7 +20,7 @@ else
   .forEach(function(c) { 
   	document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
 }
-}
+
 
 
 function getMinElement(){
